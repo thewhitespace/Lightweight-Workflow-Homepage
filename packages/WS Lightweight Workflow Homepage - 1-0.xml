@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2016-09-28 10:59:38">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description>Remove the video channels and live feed from workflow</description>
+<inserted/>
+<name>WS Lightweight Workflow Homepage - 1.0</name>
+<origin_sys_id/>
+<release_date/>
+<remote_sys_id>97616d470f0a22006f76f77ce1050e91</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>james@thewhitespace.io</sys_created_by>
+<sys_created_on>2016-09-28 10:59:37</sys_created_on>
+<sys_id>54e4210b0f0a22006f76f77ce1050e44</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@thewhitespace.io</sys_updated_by>
+<sys_updated_on>2016-09-28 10:59:37</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ui_page_c39d15070f0a22006f76f77ce1050e14</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ui_page"&gt;&lt;sys_ui_page action="INSERT_OR_UPDATE"&gt;&lt;category&gt;general&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[$j(document).ready(function(){
+	$j('#page_timing_div').hide();
+	if(isMSIE8)
+	  $j('#wf_live_feed').remove();
+});
+]]&gt;&lt;/client_script&gt;&lt;description&gt;Welcome page for workflow editor&lt;/description&gt;&lt;direct&gt;false&lt;/direct&gt;&lt;endpoint/&gt;&lt;html&gt;&lt;![CDATA[&lt;?xml version="1.0"?&gt;
+&lt;j:jelly xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null" trim="false"&gt;
+&lt;g:inline template="ie_checker.xml" /&gt;
+&lt;style&gt;.tab-content .tab-pane.active, .tab-content .active.segmented-pane{border: none !important;}&lt;/style&gt;
+  &lt;g:evaluate var="jvar_show_custom_activity_tabs" expression="GlideProperties.getBoolean('glide.workflow.show_custom_activity_tabs', false) ${AND} gs.hasRole('activity_creator')"/&gt;
+  &lt;g:requires name="styles/workflow_theme.generated.css"/&gt;
+  &lt;g:requires name="scripts/lib/jquery_includes.js" includes="true"/&gt;
+
+  &lt;j2:if test="${jvar_show_custom_activity_tabs}"&gt;
+    &lt;j2:if test="$[!jvar_isMSIE8]"&gt;
+      &lt;g:requires name="scripts/heisenberg/heisenberg_all.js" includes="true"/&gt;
+    &lt;/j2:if&gt;
+  &lt;/j2:if&gt;
+  &lt;div class="wf-welcome-tab"&gt;
+    &lt;j2:if test="${jvar_show_custom_activity_tabs}"&gt;
+      &lt;j2:if test="$[!jvar_isMSIE8]"&gt;
+          &lt;ul role="tablist" class="nav nav-segmented sn-tabs-basic"&gt;
+            &lt;li  class="active"&gt;
+              &lt;a id="segmentedtab1" aria-controls="segmented1" tabindex="0" role="tab" data-toggle="segmented" href="#segmented1" aria-expanded="false"&gt;Workflow&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a id="segmentedtab2" aria-controls="segmented2" tabindex="0" role="tab" data-toggle="segmented" href="#segmented2" aria-expanded="false"&gt;Orchestration&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+		&lt;/j2:if&gt;
+    &lt;/j2:if&gt;
+    &lt;div class="welcome-hint"&gt;
+      Click the &lt;span class="icon-add"/&gt; icon in the Workflows tab to create a new Workflow
+    &lt;/div&gt;
+    &lt;div class="tab-content"&gt;
+      &lt;div id="segmented1" aria-hidden="false" role="tabpanel" class="segmented-pane active" aria-labelledby="segmentedtab1"&gt;
+        &lt;j2:if test="${jvar_show_custom_activity_tabs}"&gt;
+          &lt;j2:if test="$[jvar_isMSIE8]"&gt;
+			  &lt;h3&gt;Workflow&lt;/h3&gt;
+  	    &lt;/j2:if&gt;
+	    &lt;/j2:if&gt;
+        &lt;ul class="content-nav"&gt;
+          &lt;li&gt;
+			  &lt;h3&gt;${gs.getMessage("Resources")}&lt;/h3&gt;
+          &lt;/li&gt;
+			&lt;li&gt;
+            &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Workflow_Overview"&gt; ${gs.getMessage('Overview')} &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a target="_new" color="#0000ff" href="home.do?sysparm_userpref_homepage=9e792457eb812100ec9a82810206fef1$[AND]sysparm_nostack=true"&gt; ${gs.getMessage('Dashboard')} &lt;/a&gt;
+          &lt;/li&gt;
+
+          &lt;li&gt;
+            &lt;a target="_new" href="https://hi.service-now.com/kb_view.do?sysparm_article=KB0541991"&gt; ${gs.getMessage('Knowledge Articles')} &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Orchestration_Video"&gt; ${gs.getMessage('Video Tutorials')} &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class="content-body"&gt;
+			&lt;div id="workflowchannel" class="widget-cotent"&gt;
+                &lt;h3 class="widget-header"&gt; ${gs.getMessage('Channel')}&lt;/h3&gt;
+
+			    &lt;div class="widget-link"&gt;
+                    &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Deleting_YouTube_Channel"&gt;Trouble viewing Channel?&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;iframe src=" https://www.youtube.com/embed?list=PLCOmiTb5WX3o_ksSvcNhKlAfh4yZOZlYz" width="525" height="380" frameborder="0" allowfullscreen="true"&gt;&lt;/iframe&gt;
+		    &lt;/div&gt;
+          &lt;div class="widget-cotent"&gt;
+            &lt;h3 class="widget-header"&gt;${gs.getMessage('Community')}&lt;/h3&gt;
+            &lt;div class="widget-link"&gt;
+              &lt;a target="_new" href="https://community.servicenow.com/discussion/create!input.jspa?containerType=14$[AMP]containerID=2011"&gt;Start a Dialog&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;iframe src="render_gadget_widgetWorkflowRSS.do?sysparm_nostack=true" width="525" height="380" frameborder="0" allowfullscreen="true" scrolling="no"&gt;&lt;/iframe&gt;
+          &lt;/div&gt;
+		  &lt;j2:if test="$[!jvar_isMSIE8]"&gt;
+            &lt;div class="widget-cotent" id="wf_live_feed"&gt;
+              &lt;h3 class="widget-header"&gt;${gs.getMessage('Live Feed')}&lt;/h3&gt;
+              &lt;iframe src="live_feed_launcher.do?sysparm_group_id=72a67633372321009a80a0ffbe41f1ed$[AND]sysparm_feed_type=group_feed$[AND]sysparm_nostack=true" width="525" height="760"&gt;&lt;/iframe&gt;
+            &lt;/div&gt;
+		  &lt;/j2:if&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;j2:if test="${jvar_show_custom_activity_tabs}"&gt;
+        &lt;div id="segmented2" aria-hidden="true" role="tabpanel" class="segmented-pane" aria-labelledby="segmentedtab2"&gt;
+          &lt;j2:if test="$[jvar_isMSIE8]"&gt;
+			  &lt;h3&gt;Orchestration&lt;/h3&gt;
+          &lt;/j2:if&gt;
+          &lt;ul class="content-nav"&gt;
+            &lt;li&gt;
+				&lt;h3&gt;${gs.getMessage("Resources")}&lt;/h3&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Orchestration"&gt; ${gs.getMessage('Overview')} &lt;/a&gt;
+            &lt;/li&gt;
+			  &lt;li&gt;
+            &lt;a target="_new" color="#0000ff" href="home.do?sysparm_userpref_homepage=9e792457eb812100ec9a82810206fef1$[AND]sysparm_nostack=true"&gt; ${gs.getMessage('Dashboard')} &lt;/a&gt;
+          &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a target="_new" href="https://hi.service-now.com/kb_home.do?jvar_selected_topic=Automation+Solutions&amp;amp;sysparm_topic=Automation+Solutions"&gt; ${gs.getMessage('Knowledge Articles')} &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Orchestration_Video"&gt; ${gs.getMessage('Video Tutorials')} &lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div class="content-body"&gt;
+            &lt;div id="orcheschannel" class="widget-cotent"&gt;
+                &lt;h3 class="widget-header"&gt; ${gs.getMessage('Channel')}&lt;/h3&gt;
+
+			    &lt;div class="widget-link"&gt;
+                    &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Deleting_YouTube_Channel"&gt;Trouble viewing Channel?&lt;/a&gt;
+                &lt;/div&gt;
+
+               &lt;iframe src="https://www.youtube.com/embed?list=PLCOmiTb5WX3o6xHIFhZC0FRue4Uwlz0Xm" width="525" height="380" frameborder="0" allowfullscreen="true"&gt;&lt;/iframe&gt;
+			&lt;/div&gt;
+            &lt;div class="widget-cotent"&gt;
+              &lt;h3 class="widget-header"&gt;${gs.getMessage('Community')}&lt;/h3&gt;
+              &lt;div class="widget-link"&gt;
+                &lt;a target="_new" href="https://community.servicenow.com/discussion/create!input.jspa?containerType=14$[AMP]containerID=2011"&gt;Start a Dialog&lt;/a&gt;
+              &lt;/div&gt;
+              &lt;iframe src="render_gadget_widgetOrchestrationRSS.do?sysparm_nostack=true" width="525" height="380" frameborder="0" allowfullscreen="true" scrolling="no"&gt;&lt;/iframe&gt;
+            &lt;/div&gt;
+  		  &lt;j2:if test="$[!jvar_isMSIE8]"&gt;
+              &lt;div class="widget-cotent" id="wf_live_feed"&gt;
+                &lt;h3 class="widget-header"&gt;${gs.getMessage('Live Feed')} &lt;/h3&gt;
+                &lt;iframe src="live_feed_launcher.do?sysparm_group_id=0c3bbea0eb403100ec9a82810206fe44$[AND]sysparm_feed_type=group_feed$[AND]sysparm_viewsize=small$[AND]sysparm_nostack=true" width="525" height="760"&gt; &lt;/iframe&gt;
+              &lt;/div&gt;
+  		  &lt;/j2:if&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/j2:if&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/j:jelly&gt;
+]]&gt;&lt;/html&gt;&lt;name&gt;workflow_editor_welcome_backup&lt;/name&gt;&lt;processing_script/&gt;&lt;sys_class_name&gt;sys_ui_page&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@thewhitespace.io&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-09-28 10:27:52&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;c39d15070f0a22006f76f77ce1050e14&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;workflow_editor_welcome_backup&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_page_c39d15070f0a22006f76f77ce1050e14&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@thewhitespace.io&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-09-28 10:27:52&lt;/sys_updated_on&gt;&lt;/sys_ui_page&gt;&lt;/record_update&gt;</payload>
+<remote_update_set display_value="WS Lightweight Workflow Homepage - 1.0">54e4210b0f0a22006f76f77ce1050e44</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@thewhitespace.io</sys_created_by>
+<sys_created_on>2016-09-28 10:59:37</sys_created_on>
+<sys_id>18e4210b0f0a22006f76f77ce1050e44</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@thewhitespace.io</sys_updated_by>
+<sys_updated_on>2016-09-28 10:59:37</sys_updated_on>
+<table/>
+<target_name>workflow_editor_welcome_backup</target_name>
+<type>UI Page</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ui_page_2a8d622337222100b2cf04368e41f1cf</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ui_page"&gt;&lt;sys_ui_page action="INSERT_OR_UPDATE"&gt;&lt;category&gt;general&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[/*$j(document).ready(function(){
+	$j('#page_timing_div').hide();
+	if(isMSIE8)
+	  $j('#wf_live_feed').remove();
+});*/
+]]&gt;&lt;/client_script&gt;&lt;description&gt;Welcome page for workflow editor&lt;/description&gt;&lt;direct&gt;false&lt;/direct&gt;&lt;endpoint/&gt;&lt;html&gt;&lt;![CDATA[&lt;?xml version="1.0"?&gt;
+&lt;j:jelly xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null" trim="false"&gt;
+&lt;g:inline template="ie_checker.xml" /&gt;
+&lt;style&gt;.tab-content .tab-pane.active, .tab-content .active.segmented-pane{border: none !important;}&lt;/style&gt;
+  &lt;g:evaluate var="jvar_show_custom_activity_tabs" expression="GlideProperties.getBoolean('glide.workflow.show_custom_activity_tabs', false) ${AND} gs.hasRole('activity_creator')"/&gt;
+  &lt;g:requires name="styles/workflow_theme.generated.css"/&gt;
+  &lt;g:requires name="scripts/lib/jquery_includes.js" includes="true"/&gt;
+
+  &lt;j2:if test="${jvar_show_custom_activity_tabs}"&gt;
+    &lt;j2:if test="$[!jvar_isMSIE8]"&gt;
+      &lt;g:requires name="scripts/heisenberg/heisenberg_all.js" includes="true"/&gt;
+    &lt;/j2:if&gt;
+  &lt;/j2:if&gt;
+  &lt;div class="wf-welcome-tab"&gt;
+    &lt;j2:if test="${jvar_show_custom_activity_tabs}"&gt;
+      &lt;j2:if test="$[!jvar_isMSIE8]"&gt;
+          &lt;ul role="tablist" class="nav nav-segmented sn-tabs-basic"&gt;
+            &lt;li  class="active"&gt;
+              &lt;a id="segmentedtab1" aria-controls="segmented1" tabindex="0" role="tab" data-toggle="segmented" href="#segmented1" aria-expanded="false"&gt;Workflow&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a id="segmentedtab2" aria-controls="segmented2" tabindex="0" role="tab" data-toggle="segmented" href="#segmented2" aria-expanded="false"&gt;Orchestration&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+		&lt;/j2:if&gt;
+    &lt;/j2:if&gt;
+    &lt;div class="welcome-hint"&gt;
+      Click the &lt;span class="icon-add"/&gt; icon in the Workflows tab to create a new Workflow
+    &lt;/div&gt;
+    &lt;div class="tab-content"&gt;
+      &lt;div id="segmented1" aria-hidden="false" role="tabpanel" class="segmented-pane active" aria-labelledby="segmentedtab1"&gt;
+        &lt;j2:if test="${jvar_show_custom_activity_tabs}"&gt;
+          &lt;j2:if test="$[jvar_isMSIE8]"&gt;
+			  &lt;h3&gt;Workflow&lt;/h3&gt;
+  	    &lt;/j2:if&gt;
+	    &lt;/j2:if&gt;
+        &lt;ul class="content-nav"&gt;
+          &lt;li&gt;
+			  &lt;h3&gt;${gs.getMessage("Resources")}&lt;/h3&gt;
+          &lt;/li&gt;
+			&lt;li&gt;
+            &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Workflow_Overview"&gt; ${gs.getMessage('Overview')} &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a target="_new" color="#0000ff" href="home.do?sysparm_userpref_homepage=9e792457eb812100ec9a82810206fef1$[AND]sysparm_nostack=true"&gt; ${gs.getMessage('Dashboard')} &lt;/a&gt;
+          &lt;/li&gt;
+
+          &lt;li&gt;
+            &lt;a target="_new" href="https://hi.service-now.com/kb_view.do?sysparm_article=KB0541991"&gt; ${gs.getMessage('Knowledge Articles')} &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Orchestration_Video"&gt; ${gs.getMessage('Video Tutorials')} &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class="content-body"&gt;
+			&lt;!--div id="workflowchannel" class="widget-cotent"&gt;
+                &lt;h3 class="widget-header"&gt; ${gs.getMessage('Channel')}&lt;/h3&gt;
+
+			    &lt;div class="widget-link"&gt;
+                    &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Deleting_YouTube_Channel"&gt;Trouble viewing Channel?&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;iframe src=" https://www.youtube.com/embed?list=PLCOmiTb5WX3o_ksSvcNhKlAfh4yZOZlYz" width="525" height="380" frameborder="0" allowfullscreen="true"&gt;&lt;/iframe&gt;
+		    &lt;/div--&gt;
+          &lt;div class="widget-cotent"&gt;
+            &lt;h3 class="widget-header"&gt;${gs.getMessage('Community')}&lt;/h3&gt;
+            &lt;div class="widget-link"&gt;
+              &lt;a target="_new" href="https://community.servicenow.com/discussion/create!input.jspa?containerType=14$[AMP]containerID=2011"&gt;Start a Dialog&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;iframe src="render_gadget_widgetWorkflowRSS.do?sysparm_nostack=true" width="525" height="380" frameborder="0" allowfullscreen="true" scrolling="no"&gt;&lt;/iframe&gt;
+          &lt;/div&gt;
+		  &lt;!--j2:if test="$[!jvar_isMSIE8]"&gt;
+            &lt;div class="widget-cotent" id="wf_live_feed"&gt;
+              &lt;h3 class="widget-header"&gt;${gs.getMessage('Live Feed')}&lt;/h3&gt;
+              &lt;iframe src="live_feed_launcher.do?sysparm_group_id=72a67633372321009a80a0ffbe41f1ed$[AND]sysparm_feed_type=group_feed$[AND]sysparm_nostack=true" width="525" height="760"&gt;&lt;/iframe&gt;
+            &lt;/div&gt;
+		  &lt;/j2:if--&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;j2:if test="${jvar_show_custom_activity_tabs}"&gt;
+        &lt;div id="segmented2" aria-hidden="true" role="tabpanel" class="segmented-pane" aria-labelledby="segmentedtab2"&gt;
+          &lt;j2:if test="$[jvar_isMSIE8]"&gt;
+			  &lt;h3&gt;Orchestration&lt;/h3&gt;
+          &lt;/j2:if&gt;
+          &lt;ul class="content-nav"&gt;
+            &lt;li&gt;
+				&lt;h3&gt;${gs.getMessage("Resources")}&lt;/h3&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Orchestration"&gt; ${gs.getMessage('Overview')} &lt;/a&gt;
+            &lt;/li&gt;
+			  &lt;li&gt;
+            &lt;a target="_new" color="#0000ff" href="home.do?sysparm_userpref_homepage=9e792457eb812100ec9a82810206fef1$[AND]sysparm_nostack=true"&gt; ${gs.getMessage('Dashboard')} &lt;/a&gt;
+          &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a target="_new" href="https://hi.service-now.com/kb_home.do?jvar_selected_topic=Automation+Solutions&amp;amp;sysparm_topic=Automation+Solutions"&gt; ${gs.getMessage('Knowledge Articles')} &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Orchestration_Video"&gt; ${gs.getMessage('Video Tutorials')} &lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div class="content-body"&gt;
+            &lt;!--div id="orcheschannel" class="widget-cotent"&gt;
+                &lt;h3 class="widget-header"&gt; ${gs.getMessage('Channel')}&lt;/h3&gt;
+
+			    &lt;div class="widget-link"&gt;
+                    &lt;a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Deleting_YouTube_Channel"&gt;Trouble viewing Channel?&lt;/a&gt;
+                &lt;/div&gt;
+
+               &lt;iframe src="https://www.youtube.com/embed?list=PLCOmiTb5WX3o6xHIFhZC0FRue4Uwlz0Xm" width="525" height="380" frameborder="0" allowfullscreen="true"&gt;&lt;/iframe&gt;
+			&lt;/div--&gt;
+            &lt;div class="widget-cotent"&gt;
+              &lt;h3 class="widget-header"&gt;${gs.getMessage('Community')}&lt;/h3&gt;
+              &lt;div class="widget-link"&gt;
+                &lt;a target="_new" href="https://community.servicenow.com/discussion/create!input.jspa?containerType=14$[AMP]containerID=2011"&gt;Start a Dialog&lt;/a&gt;
+              &lt;/div&gt;
+              &lt;iframe src="render_gadget_widgetOrchestrationRSS.do?sysparm_nostack=true" width="525" height="380" frameborder="0" allowfullscreen="true" scrolling="no"&gt;&lt;/iframe&gt;
+            &lt;/div&gt;
+  		  &lt;!--j2:if test="$[!jvar_isMSIE8]"&gt;
+              &lt;div class="widget-cotent" id="wf_live_feed"&gt;
+                &lt;h3 class="widget-header"&gt;${gs.getMessage('Live Feed')} &lt;/h3&gt;
+                &lt;iframe src="live_feed_launcher.do?sysparm_group_id=0c3bbea0eb403100ec9a82810206fe44$[AND]sysparm_feed_type=group_feed$[AND]sysparm_viewsize=small$[AND]sysparm_nostack=true" width="525" height="760"&gt; &lt;/iframe&gt;
+              &lt;/div&gt;
+  		  &lt;/j2:if--&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/j2:if&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/j:jelly&gt;
+]]&gt;&lt;/html&gt;&lt;name&gt;workflow_editor_welcome&lt;/name&gt;&lt;processing_script/&gt;&lt;sys_class_name&gt;sys_ui_page&lt;/sys_class_name&gt;&lt;sys_created_by&gt;shilpa.tisgaonkar&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2014-08-21 17:27:37&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;2a8d622337222100b2cf04368e41f1cf&lt;/sys_id&gt;&lt;sys_mod_count&gt;241&lt;/sys_mod_count&gt;&lt;sys_name&gt;workflow_editor_welcome&lt;/sys_name&gt;&lt;sys_package display_value="Workflow Runtime Engine" source="com.glideapp.workflow"&gt;456390070f2312007b3a3e7ce1050e7e&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_page_2a8d622337222100b2cf04368e41f1cf&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@thewhitespace.io&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-09-28 10:29:56&lt;/sys_updated_on&gt;&lt;/sys_ui_page&gt;&lt;/record_update&gt;</payload>
+<remote_update_set display_value="WS Lightweight Workflow Homepage - 1.0">54e4210b0f0a22006f76f77ce1050e44</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@thewhitespace.io</sys_created_by>
+<sys_created_on>2016-09-28 10:59:37</sys_created_on>
+<sys_id>d4e4210b0f0a22006f76f77ce1050e44</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@thewhitespace.io</sys_updated_by>
+<sys_updated_on>2016-09-28 10:59:37</sys_updated_on>
+<table/>
+<target_name>workflow_editor_welcome</target_name>
+<type>UI Page</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>

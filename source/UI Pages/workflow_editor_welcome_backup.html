@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<j:jelly xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null" trim="false">
+<g:inline template="ie_checker.xml" />
+<style>.tab-content .tab-pane.active, .tab-content .active.segmented-pane{border: none !important;}</style>
+  <g:evaluate var="jvar_show_custom_activity_tabs" expression="GlideProperties.getBoolean('glide.workflow.show_custom_activity_tabs', false) ${AND} gs.hasRole('activity_creator')"/>
+  <g:requires name="styles/workflow_theme.generated.css"/>
+  <g:requires name="scripts/lib/jquery_includes.js" includes="true"/>
+
+  <j2:if test="${jvar_show_custom_activity_tabs}">
+    <j2:if test="$[!jvar_isMSIE8]">
+      <g:requires name="scripts/heisenberg/heisenberg_all.js" includes="true"/>
+    </j2:if>
+  </j2:if>
+  <div class="wf-welcome-tab">
+    <j2:if test="${jvar_show_custom_activity_tabs}">
+      <j2:if test="$[!jvar_isMSIE8]">
+          <ul role="tablist" class="nav nav-segmented sn-tabs-basic">
+            <li  class="active">
+              <a id="segmentedtab1" aria-controls="segmented1" tabindex="0" role="tab" data-toggle="segmented" href="#segmented1" aria-expanded="false">Workflow</a>
+            </li>
+            <li>
+              <a id="segmentedtab2" aria-controls="segmented2" tabindex="0" role="tab" data-toggle="segmented" href="#segmented2" aria-expanded="false">Orchestration</a>
+            </li>
+          </ul>
+    </j2:if>
+    </j2:if>
+    <div class="welcome-hint">
+      Click the <span class="icon-add"/> icon in the Workflows tab to create a new Workflow
+    </div>
+    <div class="tab-content">
+      <div id="segmented1" aria-hidden="false" role="tabpanel" class="segmented-pane active" aria-labelledby="segmentedtab1">
+        <j2:if test="${jvar_show_custom_activity_tabs}">
+          <j2:if test="$[jvar_isMSIE8]">
+        <h3>Workflow</h3>
+        </j2:if>
+      </j2:if>
+        <ul class="content-nav">
+          <li>
+        <h3>${gs.getMessage("Resources")}</h3>
+          </li>
+      <li>
+            <a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Workflow_Overview"> ${gs.getMessage('Overview')} </a>
+          </li>
+          <li>
+            <a target="_new" color="#0000ff" href="home.do?sysparm_userpref_homepage=9e792457eb812100ec9a82810206fef1$[AND]sysparm_nostack=true"> ${gs.getMessage('Dashboard')} </a>
+          </li>
+
+          <li>
+            <a target="_new" href="https://hi.service-now.com/kb_view.do?sysparm_article=KB0541991"> ${gs.getMessage('Knowledge Articles')} </a>
+          </li>
+          <li>
+            <a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Orchestration_Video"> ${gs.getMessage('Video Tutorials')} </a>
+          </li>
+        </ul>
+
+        <div class="content-body">
+      <div id="workflowchannel" class="widget-cotent">
+                <h3 class="widget-header"> ${gs.getMessage('Channel')}</h3>
+
+          <div class="widget-link">
+                    <a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Deleting_YouTube_Channel">Trouble viewing Channel?</a>
+                </div>
+                <iframe src=" https://www.youtube.com/embed?list=PLCOmiTb5WX3o_ksSvcNhKlAfh4yZOZlYz" width="525" height="380" frameborder="0" allowfullscreen="true"></iframe>
+        </div>
+          <div class="widget-cotent">
+            <h3 class="widget-header">${gs.getMessage('Community')}</h3>
+            <div class="widget-link">
+              <a target="_new" href="https://community.servicenow.com/discussion/create!input.jspa?containerType=14$[AMP]containerID=2011">Start a Dialog</a>
+            </div>
+            <iframe src="render_gadget_widgetWorkflowRSS.do?sysparm_nostack=true" width="525" height="380" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
+          </div>
+      <j2:if test="$[!jvar_isMSIE8]">
+            <div class="widget-cotent" id="wf_live_feed">
+              <h3 class="widget-header">${gs.getMessage('Live Feed')}</h3>
+              <iframe src="live_feed_launcher.do?sysparm_group_id=72a67633372321009a80a0ffbe41f1ed$[AND]sysparm_feed_type=group_feed$[AND]sysparm_nostack=true" width="525" height="760"></iframe>
+            </div>
+      </j2:if>
+        </div>
+      </div>
+
+      <j2:if test="${jvar_show_custom_activity_tabs}">
+        <div id="segmented2" aria-hidden="true" role="tabpanel" class="segmented-pane" aria-labelledby="segmentedtab2">
+          <j2:if test="$[jvar_isMSIE8]">
+        <h3>Orchestration</h3>
+          </j2:if>
+          <ul class="content-nav">
+            <li>
+        <h3>${gs.getMessage("Resources")}</h3>
+            </li>
+            <li>
+              <a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Orchestration"> ${gs.getMessage('Overview')} </a>
+            </li>
+        <li>
+            <a target="_new" color="#0000ff" href="home.do?sysparm_userpref_homepage=9e792457eb812100ec9a82810206fef1$[AND]sysparm_nostack=true"> ${gs.getMessage('Dashboard')} </a>
+          </li>
+            <li>
+              <a target="_new" href="https://hi.service-now.com/kb_home.do?jvar_selected_topic=Automation+Solutions&amp;sysparm_topic=Automation+Solutions"> ${gs.getMessage('Knowledge Articles')} </a>
+            </li>
+            <li>
+              <a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Orchestration_Video"> ${gs.getMessage('Video Tutorials')} </a>
+            </li>
+          </ul>
+          <div class="content-body">
+            <div id="orcheschannel" class="widget-cotent">
+                <h3 class="widget-header"> ${gs.getMessage('Channel')}</h3>
+
+          <div class="widget-link">
+                    <a target="_new" href="http://docs.servicenow.com/?context=CSHelp:Deleting_YouTube_Channel">Trouble viewing Channel?</a>
+                </div>
+
+               <iframe src="https://www.youtube.com/embed?list=PLCOmiTb5WX3o6xHIFhZC0FRue4Uwlz0Xm" width="525" height="380" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+            <div class="widget-cotent">
+              <h3 class="widget-header">${gs.getMessage('Community')}</h3>
+              <div class="widget-link">
+                <a target="_new" href="https://community.servicenow.com/discussion/create!input.jspa?containerType=14$[AMP]containerID=2011">Start a Dialog</a>
+              </div>
+              <iframe src="render_gadget_widgetOrchestrationRSS.do?sysparm_nostack=true" width="525" height="380" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
+            </div>
+        <j2:if test="$[!jvar_isMSIE8]">
+              <div class="widget-cotent" id="wf_live_feed">
+                <h3 class="widget-header">${gs.getMessage('Live Feed')} </h3>
+                <iframe src="live_feed_launcher.do?sysparm_group_id=0c3bbea0eb403100ec9a82810206fe44$[AND]sysparm_feed_type=group_feed$[AND]sysparm_viewsize=small$[AND]sysparm_nostack=true" width="525" height="760"> </iframe>
+              </div>
+        </j2:if>
+          </div>
+        </div>
+      </j2:if>
+    </div>
+  </div>
+</j:jelly>
