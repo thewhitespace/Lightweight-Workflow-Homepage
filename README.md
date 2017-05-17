@@ -1,9 +1,11 @@
 # Lightweight Workflow Homepage
 Cleanup the workflow IDE homepage to help it load faster.
 
+![Comparison](assets/compare.png)
+
 ### About
 
-This is a simple update set that removes the Youtube video and live feed from the
+This is a simple update set that removes the Youtube video and live feeds from the
 workflow IDE in ServiceNow.
 
 It renames the original file in order to keep a backup and adds a new UI Page.
